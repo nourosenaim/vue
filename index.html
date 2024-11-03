@@ -7,15 +7,19 @@
 </head>
 <body>
     <div id="shopping-list">
-        <h1>{{header}}</h1>
-        <input v-model="header">
+        <h1>{{header ? header.toLocaleUpperCase() : "Welcone Vue"}}</h1>
+        <!-- also can use 
+        <h1>{{header.toLocaleUpperCase() || "Welcone Vue"}}</h1> -->
+        <!-- <input v-model="header">  For input-->
     </div>
-    <script src="https://unpkg.com/vue@3"></script>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
     <script>
         const shoppingList = Vue.createApp({
             data(){
                 return{
-                    header:"Vue is Ready to use!"
+                    header:" Shopping List App"
                 }
             }
         }).mount('#shopping-list')
