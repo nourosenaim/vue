@@ -11,10 +11,42 @@
         <!-- also can use 
         <h1>{{header.toLocaleUpperCase() || "Welcone Vue"}}</h1> -->
         <!-- <input v-model="header">  For input-->
-         <ul>
-            <li v-for="item in items" :key="item.id"> {{item.label}}</li>
-            <!-- we can also write this way
-            <li v-for="(item, key) in items" :key="item.id">{{key}} {{item.label}}</li> -->
+          <!-- input -->
+        <input v-model="newItem" type="text" placeholder="Add an Item">
+        <li v-for="item in items" :key="item.id"> {{item.label}}</li>
+        <!-- we can also write this way
+        <li v-for="(item, key) in items" :key="item.id">{{key}} {{item.label}}</li> -->
+
+       
+        <!-- Radio -->
+        <label>Priority<input type="radio" v-model="newItemProperty" value="low">LOW</label>
+        <label><input type="radio" v-model="newItemProperty" value="high">High</label>
+        <br>
+        {{newItem}} <br> {{newItemProperty}}
+        <br>
+        <!-- Select -->
+        <label>
+            gender
+            <select v-model="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </label>
+        <br>
+
+        <!-- CheckBox -->
+         <label>
+            <input type="checkbox" v-model="priorityCheck"> PriorityCheck
+         </label>
+         {{priorityCheck}}
+         <br>
+         Choose ice creame Falvor
+         <label><input type="checkbox" v-model="iceCream">Vanila</label>
+         <label><input type="checkbox" v-model="iceCream">Strawberry</label>
+         <label><input type="checkbox" v-model="iceCream">Cream</label>
+         <label><input type="checkbox" v-model="iceCream">Mango</label>
+
+            
             
          </ul>
     </div>
@@ -26,6 +58,11 @@
             data(){
                 return{
                     header:" Shopping List App",
+                    newItem:'',
+                    newItemProperty:'low',
+                    gender:'male',
+                    priorityCheck:'false',
+                    iceCream:[],
                     items: [
                         {id:1, label:"10 party hats"},
                         {id:2, label:"2 board games"},
