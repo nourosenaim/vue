@@ -11,8 +11,19 @@
         <!-- also can use 
         <h1>{{header.toLocaleUpperCase() || "Welcone Vue"}}</h1> -->
         <!-- <input v-model="header">  For input-->
-          <!-- input -->
-        <input v-model="newItem" type="text" placeholder="Add an Item">
+         
+        <div class="add-item-form">
+             <!-- input -->
+              <!-- v-on: short form is @ we can replace v-on: with @ -->
+            <input v-on:keyup.enter="items.push({id:items.length + 1,label: newItem })"
+                  v-model="newItem" type="text" placeholder="Add an Item">
+            <button 
+                v-on:click="items.push({id:items.length + 1,label: newItem })"
+                class="btn btn-primary">
+                Save
+            </button>
+
+        </div>
         <li v-for="item in items" :key="item.id"> {{item.label}}</li>
         <!-- we can also write this way
         <li v-for="(item, key) in items" :key="item.id">{{key}} {{item.label}}</li> -->
