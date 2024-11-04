@@ -15,10 +15,10 @@
         <div class="add-item-form">
              <!-- input -->
               <!-- v-on: short form is @ we can replace v-on: with @ -->
-            <input v-on:keyup.enter="items.push({id:items.length + 1,label: newItem })"
+            <input @keyup.enter="saveItem()"
                   v-model="newItem" type="text" placeholder="Add an Item">
             <button 
-                v-on:click="items.push({id:items.length + 1,label: newItem })"
+                v-on:click="saveItem()"
                 class="btn btn-primary">
                 Save
             </button>
@@ -78,8 +78,14 @@
                         {id:1, label:"10 party hats"},
                         {id:2, label:"2 board games"},
                         {id:3, label:"20 cups"},
-                    ]  
-                  
+                    ]      
+                }
+            },
+            methods:{
+                saveItem(){
+                    this.items.push({id:this.items.length + 1,label: this.newItem})
+                    // this line is for vanishing items name from input bar
+                    this.newItem=''
                 }
             }
         }).mount('#shopping-list')
